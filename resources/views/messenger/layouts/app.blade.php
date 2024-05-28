@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+    <meta name="csrf_token" content="{{ csrf_token() }}">
     <title>Chatting Application</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
@@ -16,6 +17,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <!-- Styles -->
+    @vite(['resources/css/app.css'])
 </head>
 
 <body>
@@ -38,10 +42,23 @@
     <script src="{{asset('assets/js/slick.min.js')}}"></script>
     <script src="{{asset('assets/js/venobox.min.js')}}"></script>
     <script src="{{asset('assets/js/emojionearea.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 
     <!--main/custom js-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-
+    <!-- Scripts -->
+    @vite(['resources/js/app.js', 'resources/js/messenger.js'])
+    <script>
+        // Create an instance of Notyf
+        var notyf = new Notyf({
+            duration: 2000,
+            position: {
+                x: 'right',
+                y: 'top',
+            },
+        });
+    </script>
+    @stack('scripts')
 </body>
 
 </html>
